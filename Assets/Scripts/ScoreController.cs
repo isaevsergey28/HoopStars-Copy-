@@ -30,7 +30,7 @@ public class ScoreController : MonoBehaviour
             StartCoroutine(SetAndNotify());
         }
     }
-    public virtual IEnumerator SetAndNotify()
+    public IEnumerator SetAndNotify()
     {
         if(gameObject.name == "LeftScore")
         {
