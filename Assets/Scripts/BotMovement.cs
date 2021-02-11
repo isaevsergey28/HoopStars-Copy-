@@ -15,7 +15,7 @@ public class BotMovement : Movement
     }
     private void Update()
     {
-        if(_botTransform.position.y < _centerDot.position.y && Random.Range(0, 20) == 10)
+        if(_botTransform.position.y < _centerDot.position.y && Random.Range(0, 15) == 10)
         {
             if (_botTransform.position.x < _centerDot.position.x && Random.Range(0, 2) == 1)
             {

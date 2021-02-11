@@ -4,38 +4,34 @@ using UnityEngine;
 
 public class HitChecker : MonoBehaviour
 {
-    private int _countInactiveDots = 0;
-    private int _triggerToIncScore = 4;
 
-    public int PlayerScore { get; private set; } = 0;
+    protected int _countInactiveDots = 0;
+    protected int _triggerToIncScore = 4;
 
-    private float _distanceToActiveDots = 5.0f;
+    public int Score { get; set; } = 0;
 
-    public GameObject[] allSphereDots;
-    public GameObject centerSphereDot;
+    protected float _distanceToActiveDots = 5.0f;
 
-    private void OnTriggerEnter(Collider other)
+    protected void DisableDot(Collider other)
     {
-        if (other.tag == "SphereDot" && other.gameObject.activeSelf)
-        {
-            _countInactiveDots++;
-            other.gameObject.SetActive(false);
-        }
+        _countInactiveDots++;
+        other.gameObject.SetActive(false);
     }
-    private void Update()
+
+    protected void CheckDots(GameObject[] allSphereDots, GameObject centerSphereDot)
     {
         _countInactiveDots = Mathf.Clamp(_countInactiveDots, 0, _triggerToIncScore);
         if (_countInactiveDots == _triggerToIncScore)
         {
             _countInactiveDots = 0;
-            PlayerScore++;
+            Score++;
         }
-        if(Vector3.Distance(gameObject.transform.position, centerSphereDot.transform.position) > _distanceToActiveDots)
+        if (Vector3.Distance(gameObject.transform.position, centerSphereDot.transform.position) > _distanceToActiveDots)
         {
-            SetAllDotsActive();
+            SetAllDotsActive(allSphereDots);
         }
     }
-    private void SetAllDotsActive()
+    protected void SetAllDotsActive(GameObject[] allSphereDots)
     {
         foreach (GameObject sphereDot in allSphereDots)
         {
@@ -43,3 +39,4 @@ public class HitChecker : MonoBehaviour
         }
     }
 }
+

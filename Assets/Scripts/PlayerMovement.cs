@@ -8,7 +8,6 @@ public class PlayerMovement : Movement
  
     private void Start()
     {
-        Time.timeScale = 3f;
         _rigidbody = GetComponent<Rigidbody>();
     }
     public void SetLeftImpulse()

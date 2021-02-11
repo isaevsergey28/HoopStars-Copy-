@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - SphereDot
+  - PlayerDot
+  - BotDot
   layers:
   - Default
   - TransparentFX

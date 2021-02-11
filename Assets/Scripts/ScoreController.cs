@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ScoreController : MonoBehaviour
 {
+    
+
     private readonly string[] COMPLIMENTS = { "EXCELLENT", "FANTASTIC", "WONDERFUL" };
     [SerializeField] private GameObject _complimentPrefab;
     [SerializeField] private Transform _complimentParent;
@@ -12,7 +14,7 @@ public class ScoreController : MonoBehaviour
     private HitChecker _hitCheker;
 
     private Text _scoreText;
-    private int _playerScore;
+    private int _score;
 
     private Animator _textAnimation;
     private void Start()
@@ -24,22 +26,24 @@ public class ScoreController : MonoBehaviour
 
     private void Update()
     {
-        _playerScore = _hitCheker.PlayerScore;
-        if(_scoreText.text != _playerScore.ToString())
+        _score = _hitCheker.Score;
+        if(_scoreText.text != _score.ToString())
         {
             StartCoroutine(SetAndNotify());
+            
         }
     }
-    public IEnumerator SetAndNotify()
+    public  IEnumerator SetAndNotify()
     {
         if(gameObject.name == "LeftScore")
         {
             ShowCompliment();
         }
-        _scoreText.text = _playerScore.ToString();
+        _scoreText.text = _score.ToString();
         _textAnimation.enabled = true;
         yield return new WaitForSeconds(4f);
         _textAnimation.enabled = false;
+
     }
     private void ShowCompliment()
     {
