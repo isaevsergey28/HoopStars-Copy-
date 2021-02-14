@@ -11,7 +11,6 @@ public class SphereBehaviour : MonoBehaviour
     public GameObject botCenterDot;
 
     [SerializeField] private Vector3 _startPos;
-    [SerializeField] private GameObject _explosionPrefab;
 
     private void Update()
     {
@@ -22,8 +21,6 @@ public class SphereBehaviour : MonoBehaviour
         if(GameController.instance.IsGameOver)
         {
             Destroy(this.gameObject);
-            GameObject explosionTemp = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
-            Destroy(explosionTemp, 2f);
             
         }
     }
