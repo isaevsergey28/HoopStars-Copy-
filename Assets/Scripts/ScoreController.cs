@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ScoreController : MonoBehaviour
 {
-    
-
     private readonly string[] COMPLIMENTS = { "EXCELLENT", "FANTASTIC", "WONDERFUL" };
     [SerializeField] private GameObject _complimentPrefab;
     [SerializeField] private Transform _complimentParent;
